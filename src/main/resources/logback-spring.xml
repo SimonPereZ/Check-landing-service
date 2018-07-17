@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+        <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+        <springProperty scope="context" name="service.name" source="spring.application.name"/>
+    <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}${service.name}.json}"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+        <appender name="jsonAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <file>${LOG_FILE}</file>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+            <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+                <maxIndex>1</maxIndex>
+                <fileNamePattern>${LOG_FILE}.%i</fileNamePattern>
+            </rollingPolicy>
+            <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+                <MaxFileSize>1MB</MaxFileSize>
+            </triggeringPolicy>
+        </appender>
+
+        <root level="INFO">
+                <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="jsonAppender"/>
+        </root>
+
+    <logger name="se.abalon" level="DEBUG"/>
+        <logger name="org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer" level="INFO"/>
+</configuration>

@@ -1,0 +1,17 @@
+
+spring:
+  mvc:
+    favicon:
+      enabled: false
+server:
+  port: 8082
+  compression:
+    enabled: true
+  servlet:
+    context-path: /check
+
+
+
+
+
+

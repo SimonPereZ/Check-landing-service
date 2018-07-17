@@ -1,0 +1,3 @@
+env:
+  name: JAVA_OPTS
+  value: -Xms64m -Xmx64m

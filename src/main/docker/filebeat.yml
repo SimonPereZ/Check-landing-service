@@ -1,0 +1,13 @@
+filebeat.prospectors:
+- input_type: log
+  paths:
+    - /var/log/*.json
+  json.message_key: message
+  json.keys_under_root: true
+  fields:
+    service: ${RELEVATE_SERVICE}
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+  template.name: filebeat
+  template.path: filebeat.template.json

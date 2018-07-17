@@ -1,0 +1,31 @@
+<div layout="column" layout-align="space-between center" layout-fill style="text-align: center">
+    <div>
+        <md-card>
+            <md-card-content>
+                <fieldset md-whiteframe="3">
+                    <md-subheader class="md-no-sticky">Välj ett av följande bonusbelopp att utnyttja: </md-subheader>
+                <md-list-item ng-repeat="offer in vm.offers">
+                    <p>{{offer.value}} {{offer.currency.code}}</p>
+                    <md-checkbox class="md-primary" ng-model="offer.checked" ng-click="vm.updateSelection($index, vm.offers)"></md-checkbox>
+                </md-list-item>
+                </fieldset>
+
+                <div align="center">
+                <p>Din valda bonus:</p>
+                <h3>{{vm.offer.value}} {{vm.offer.currency.code}}</h3>
+                </div>
+                <div ng-show="vm.offers == null" md-colors="{color: 'red'}"><h3>{{vm.errorMessage}}</h3></div>
+                <fieldset md-whiteframe="3" ng-hide="vm.offers == null">
+                    <legend>Aktivera</legend>
+                    <p style="font-size: 75%; font-style: italic">Obs! Vänta tills du är framme vid kassan för att
+                        aktivera. En Bonuscheck är endast giltig i 15 minuter från att den blivit aktiverad. </p>
+                    <div layout="column" layout-align="center center">
+                        <md-button class="md-primary md-raised" ng-click="vm.showConfirm($event)">Aktivera bonus
+                        </md-button>
+                    </div>
+                </fieldset>
+                <br>
+            </md-card-content>
+        </md-card>
+    </div>
+    </div>

@@ -1,0 +1,24 @@
+<div layout="column" layout-align="space-between center" layout-fill>
+    <div>
+        <md-card>
+            <md-card-content>
+                <h2 style="text-align:center">Din bonuscheck är nu aktiverad!</h2>
+                <fieldset md-whiteframe="3" style="background-color: whitesmoke">
+                        <h1 class="md-display-2" style="text-align:center">{{vm.offer.value}} {{vm.offer.currency.code}}</h1>
+                </fieldset><br>
+
+                <p style="text-align:center">Vänligen visa upp nedanstående kod i kassan.</p>
+                <h2 style="text-align:center; font-style: italic">{{vm.offer.code}}</h2>
+                <p style="text-align:center">Kvarvarande giltighetstid: </p>
+                <h2 id="timer" style="text-align:center"></h2>
+                <h6 style="text-align: center; color: red">Om du lämnar eller uppdaterar denna sida går du miste om din bonus.</h6>
+                <md-card-actions layout="row" layout-align="center">
+                    <md-button class="md-warn md-raised" ng-click="vm.goToEnd()">Lämna sidan
+                    </md-button>
+                </md-card-actions>
+            </md-card-content>
+
+
+        </md-card>
+    </div>
+</div>
